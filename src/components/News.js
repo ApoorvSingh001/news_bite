@@ -29,7 +29,7 @@ static propTypes={
       `https://newsapi.org/v2/top-headlines?` +
       `country=${this.props.country}&category=${this.props.category}&` +
       "apiKey=2d2e9f11e12148bb8b33ae9ce9723251"+
-      `&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+      `&page=${this.state.page}&pageSize=${this.props.pageSize}`;
       // 'https://newsapi.org/v2/top-headlines?country=us&apiKey=2d2e9f11e12148bb8b33ae9ce9723251';
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -71,7 +71,7 @@ static propTypes={
       `https://newsapi.org/v2/top-headlines?` +
       `country=${this.props.country}&category=${this.props.category}&` +
       "apiKey=2d2e9f11e12148bb8b33ae9ce9723251"+
-      `&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+      `&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
         // 'https://newsapi.org/v2/top-headlines?country=us&apiKey=2d2e9f11e12148bb8b33ae9ce9723251';
       let data = await fetch(url);
       let parsedData = await data.json();
@@ -109,12 +109,15 @@ static propTypes={
                     }
                     imageUrl={element.urlToImage}
                     newsUrl={element.url}
+                    source={element.source.name}
+                    author={element.author}
+                    date={element.publishedAt}
                   />
                 </div>
               );
             })}
           </div>
-          <div class="d-flex justify-content-evenly">
+          <div className="d-flex justify-content-evenly">
             <button
               type="button"
               className="btn btn-outline-primary"
